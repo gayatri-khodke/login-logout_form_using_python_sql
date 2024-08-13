@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+</head>
+<body>
+    <section class="container">
+        <div class="head_container">
+            <h2 id="displaylogin">Login</h2>
+            <h2 id="displaylogout">Logout</h2>
+        </div>
+
+        <!-- Login Form -->
+        <form action="/submit" method="POST" id="logoinform">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <input type="submit" value="Login">
+        </form>
+
+        <!-- Logout Form -->
+        <form action="/logout" method="POST" id="logoutform">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <input type="submit" value="Logout">
+        </form>
+    </section>
+
+    <script>
+        let login= document.getElementById('logoinform');
+        let logout = document.getElementById('logoutform');   
+        
+        // Show the logout form and hide the login form
+        document.getElementById('displaylogout').addEventListener('click', function(e) {
+            e.preventDefault();
+            logout.style.display = 'block';
+            login.style.display = 'none';
+        });
+
+        // Show the login form and hide the logout form
+        document.getElementById('displaylogin').addEventListener('click', function(e) {
+            e.preventDefault();
+            login.style.display = 'block';
+            logout.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
